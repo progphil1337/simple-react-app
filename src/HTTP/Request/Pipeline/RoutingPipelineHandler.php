@@ -25,7 +25,7 @@ class RoutingPipelineHandler implements RequestPipelineHandlerInterface
 
     }
 
-    public function process(ServerRequestInterface $request): false|ResponseInterface
+    public function __invoke(ServerRequestInterface $request): false|ResponseInterface
     {
         $uri = $request->getRequestTarget();
 
@@ -48,6 +48,6 @@ class RoutingPipelineHandler implements RequestPipelineHandlerInterface
         /** @var HandlerInterface $handler */
         $handler = $this->container->create($fqcn);
 
-        return $handler->process($serverRequest, new RouteParameters($vars));
+        return $handler($serverRequest, new RouteParameters($vars));
     }
 }

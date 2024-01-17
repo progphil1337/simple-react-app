@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class DefaultRequestPipelineHandler implements RequestPipelineHandlerInterface
 {
-    public function process(ServerRequestInterface $request): JSONResponse
+    public function __invoke(ServerRequestInterface $request): JSONResponse
     {
         return new JSONResponse(['error' => 'Not found'], 404);
     }

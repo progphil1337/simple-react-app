@@ -59,18 +59,14 @@ class RoutingService
     /**
      * @return class-string<HandlerInterface>[]
      */
-    /**
-     * @return class-string<HandlerInterface>[]
-     */
     private function getHandlers(): array
     {
-        $path = PROJECT_PATH . DIRECTORY_SEPARATOR;
         $handlerPath = str_replace('/', '\\', $this->config->get('handlers'));
 
         return array_map(
             fn(string $className): string => $handlerPath . '\\' . $className,
             $this->fileSystemService->readDirectoryRecursive(
-                $path . $handlerPath,
+                $handlerPath,
                 filterFileType: '.php',
                 relativePath: true,
                 withoutFileType: true,

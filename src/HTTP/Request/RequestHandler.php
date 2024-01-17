@@ -36,7 +36,7 @@ class RequestHandler
         $pipelineLength = count($this->pipeline);
 
         do {
-            $pipe = $this->pipeline[$current++]->process($request);
+            $pipe = $this->pipeline[$current++]($request);
         } while ($pipe === false && $current < $pipelineLength);
 
         return $pipe;

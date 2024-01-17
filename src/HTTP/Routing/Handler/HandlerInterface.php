@@ -10,5 +10,5 @@ use Psr\Http\Message\ServerRequestInterface;
 
 interface HandlerInterface
 {
-    public function process(ServerRequestInterface $serverRequest, RouteParameters $parameters): ResponseInterface;
+    public function __invoke(ServerRequestInterface $serverRequest, RouteParameters $parameters): ResponseInterface;
 }

@@ -9,5 +9,5 @@ use Psr\Http\Message\ServerRequestInterface;
 
 interface RequestPipelineHandlerInterface
 {
-    public function process(ServerRequestInterface $request): false|ResponseInterface;
+    public function __invoke(ServerRequestInterface $request): false|ResponseInterface;
 }
