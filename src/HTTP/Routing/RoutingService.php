@@ -65,7 +65,7 @@ class RoutingService
         $handlerPath = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $this->config->get('handlers'));
 
         return array_map(
-            fn(string $className): string => str_replace('/', '\\', $handlerPath . '\\' . $className),
+            fn(string $className): string => str_replace(DIRECTORY_SEPARATOR, '\\', $handlerPath . '\\' . $className),
             $this->fileSystemService->readDirectoryRecursive(
                 $path . $handlerPath,
                 filterFileType: '.php',
